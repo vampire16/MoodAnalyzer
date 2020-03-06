@@ -9,4 +9,10 @@ public class TestCases {
         String mood=moodAnalyzer.analyzer("I am in sad mood");
         Assert.assertEquals("Sad",mood);
     }
+
+    @Test
+    public void givenMessage_whenMoodAny_shouldReturnHappy(){
+        String mood=moodAnalyzer.analyzer("I am in any mood");
+        Assert.assertEquals("Happy",mood);
+    }
 }
