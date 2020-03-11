@@ -32,4 +32,15 @@ public class TestCases {
             Assert.assertEquals(MoodAnalysisException.UserDefinedType.NULL_EXCEPTION,e.userDefinedType);
         }
     }
+
+    @Test
+    public void givenMessage_WhenEmpty_ThenShouldReturnCustomException() {
+        try{
+            moodAnalyzer=new MoodAnalyzer("");
+            moodAnalyzer.analyzer();
+        }
+        catch(MoodAnalysisException e){
+            Assert.assertEquals(MoodAnalysisException.UserDefinedType.EMPTY_EXCEPTION,e.userDefinedType);
+        }
+    }
 }
