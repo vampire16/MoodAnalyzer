@@ -12,7 +12,9 @@ public class MoodAnalyzer<analyseMood> {
 
     public String analyzer() throws MoodAnalysisException {
         try {
-            if (message.contains("sad"))
+            if(message.length()==0)
+                throw new MoodAnalysisException("Message should not empty",MoodAnalysisException.UserDefinedType.EMPTY_EXCEPTION);
+            else if (message.contains("sad"))
                 return "Sad";
             else
                 return "Happy";
