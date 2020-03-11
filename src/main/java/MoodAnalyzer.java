@@ -10,7 +10,7 @@ public class MoodAnalyzer<analyseMood> {
         this.message=message;
     }
 
-    public String analyzer() {
+    public String analyzer() throws MoodAnalysisException {
         try {
             if (message.contains("sad"))
                 return "Sad";
@@ -18,7 +18,7 @@ public class MoodAnalyzer<analyseMood> {
                 return "Happy";
         }
         catch(NullPointerException e){
-            return "Happy";
+            throw new MoodAnalysisException("Message should not null", MoodAnalysisException.UserDefinedType.NULL_EXCEPTION);
         }
     }
 }
