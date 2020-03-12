@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class MoodAnalyzer<analyseMood> {
     String message;
     public static void main(String[] args) {
@@ -22,5 +24,18 @@ public class MoodAnalyzer<analyseMood> {
         catch(NullPointerException e){
             throw new MoodAnalysisException("Message should not null", MoodAnalysisException.UserDefinedType.NULL_EXCEPTION);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MoodAnalyzer<?> that = (MoodAnalyzer<?>) o;
+        return Objects.equals(message, that.message);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(message);
     }
 }
