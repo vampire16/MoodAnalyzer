@@ -43,4 +43,12 @@ public class TestCases {
             Assert.assertEquals(MoodAnalysisException.UserDefinedType.EMPTY_EXCEPTION,e.userDefinedType);
         }
     }
+
+    @Test
+    public void givenObject_WhenEquals_ThenReturnTrue() {
+        moodAnalyzer=new MoodAnalyzer();
+        MoodAnalyzer moodAnalyserObject = MoodAnalyserFactory.createMoodAnalyserObject();
+        boolean result=moodAnalyzer.equals(moodAnalyserObject);
+        Assert.assertTrue("true",result);
+    }
 }
