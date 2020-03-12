@@ -60,4 +60,14 @@ public class TestCases {
             Assert.assertEquals(MoodAnalysisException.UserDefinedType.NO_SUCH_CLASS,e.userDefinedType);
         }
     }
+
+    @Test
+    public void givenMethod_WhenWrong_ThenShouldReturnNoSuchMethod() {
+        try {
+            MoodAnalyserFactory.createMoodAnalyserObject();
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.UserDefinedType.NO_SUCH_METHOD,e.userDefinedType);
+        }
+    }
+
 }
