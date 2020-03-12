@@ -2,7 +2,8 @@ public class MoodAnalysisException extends Exception {
     enum UserDefinedType {
         NULL_EXCEPTION,
         EMPTY_EXCEPTION,
-        NO_SUCH_CLASS
+        NO_SUCH_CLASS,
+        NO_SUCH_METHOD
     };
 
     UserDefinedType userDefinedType;
@@ -12,13 +13,4 @@ public class MoodAnalysisException extends Exception {
         this.userDefinedType = userDefinedType;
     }
 
-    public MoodAnalysisException(String message, Throwable cause, UserDefinedType userDefinedType) {
-        super(message, cause);
-        this.userDefinedType = userDefinedType;
-    }
-
-    public MoodAnalysisException(Throwable cause, UserDefinedType userDefinedType) {
-        super(cause);
-        this.userDefinedType = userDefinedType;
-    }
 }
