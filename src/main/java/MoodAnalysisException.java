@@ -1,7 +1,8 @@
 public class MoodAnalysisException extends Exception {
     enum UserDefinedType {
         NULL_EXCEPTION,
-        EMPTY_EXCEPTION
+        EMPTY_EXCEPTION,
+        NO_SUCH_CLASS
     };
 
     UserDefinedType userDefinedType;
