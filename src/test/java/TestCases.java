@@ -146,4 +146,17 @@ public class TestCases {
             Assert.assertEquals(MoodAnalysisException.UserDefinedType.NO_SUCH_FIELD,e.userDefinedType);
         }
     }
+
+    @Test
+    public void givenNullMessage_ToFieldValue_ShouldThrowMoodAnalysisException(){
+        try {
+            Constructor moodConstructor = MoodAnalyserFactory.getConstructor("MoodAnalyzer");
+            MoodAnalyzer moodAnalyzerObject = MoodAnalyserFactory.createMoodAnalyserObject(moodConstructor);
+            MoodAnalyserFactory.setFieldValue(moodAnalyzerObject,"message",null);
+            MoodAnalyserFactory.invokeMethod(moodAnalyzerObject, "analyzer");
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.UserDefinedType.INVOCATION_TARGET_EXCEPTION,e.userDefinedType);
+        }
+    }
+
 }
