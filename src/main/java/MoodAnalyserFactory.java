@@ -19,13 +19,12 @@ public class MoodAnalyserFactory {
         try {
             return (MoodAnalyzer) constructor.newInstance(objects);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            throw new MoodAnalysisException(e.getMessage(),MoodAnalysisException.UserDefinedType.ILLEGAL_ACCESS_EXCEPTION);
         } catch (InstantiationException e) {
-            e.printStackTrace();
+            throw new MoodAnalysisException(e.getMessage(),MoodAnalysisException.UserDefinedType.INSTANTIATION_EXCEPTION);
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            throw new MoodAnalysisException(e.getMessage(),MoodAnalysisException.UserDefinedType.INVOCATION_TARGET_EXCEPTION);
         }
-        return null;
     }
 
     public static Object invokeMethod(Object moodAnalyserObject, String analyzer) throws MoodAnalysisException {
@@ -35,13 +34,12 @@ public class MoodAnalyserFactory {
         Object result = moodMethod.invoke(moodAnalyserObject);
         return result;
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            throw new MoodAnalysisException(e.getMessage(),MoodAnalysisException.UserDefinedType.ILLEGAL_ACCESS_EXCEPTION);
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            throw new MoodAnalysisException(e.getMessage(),MoodAnalysisException.UserDefinedType.INVOCATION_TARGET_EXCEPTION);
         } catch (NoSuchMethodException e) {
             throw new MoodAnalysisException("Method not found",MoodAnalysisException.UserDefinedType.NO_SUCH_METHOD);
         }
-        return null;
     }
 
     public static void setFieldValue(Object moodObject,String fieldName,String fieldValue) throws MoodAnalysisException {
@@ -52,7 +50,7 @@ public class MoodAnalyserFactory {
         } catch (NoSuchFieldException e) {
             throw new MoodAnalysisException("Field not found",MoodAnalysisException.UserDefinedType.NO_SUCH_FIELD);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            throw new MoodAnalysisException("Message should not null",MoodAnalysisException.UserDefinedType.ILLEGAL_ACCESS_EXCEPTION);
         }
     }
 
